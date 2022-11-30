@@ -31,5 +31,4 @@ class AuthService extends GetConnect {
       return UserResult(message: "Something went wrong .try  again ");
     }
   }
-
 }
