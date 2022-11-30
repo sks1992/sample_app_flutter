@@ -54,11 +54,11 @@ class NotesScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    " Description :${data.description}",
+                                    " Description : ${data.description}",
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    " Created At :${data.createdAt}",
+                                    " Created At : ${data.createdAt}",
                                   ),
                                 ],
                               ),

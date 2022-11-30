@@ -57,7 +57,7 @@ class NoteAddController extends GetxController with StateMixin {
     } else {
       // Get.snackbar("Success", "Post Is Success",
       //     snackPosition: SnackPosition.BOTTOM);
-      Get.offAllNamed(RouteNames.notesScreen);
+      Get.offNamed(RouteNames.dashboard);
       showProgress.value = false;
     }
     showProgress.value = false;
