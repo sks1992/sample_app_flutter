@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample_app/core/model/user_signin_model.dart';
 
-import '../model/user_signup_model.dart';
 import '../service/auth_service.dart';
 import '../service/shared_service.dart';
 import 'auth_controller.dart';
@@ -12,36 +11,35 @@ class LoginController extends GetxController with StateMixin {
   final _sharedService = Get.find<SharedService>();
   final _authController = Get.find<AuthController>();
 
-
   var showProgress = false.obs;
 
-  late TextEditingController _userNameController;
+  late TextEditingController _userEmailController;
   late TextEditingController _passwordController;
 
-  TextEditingController get userNameEditingController => _userNameController;
+  TextEditingController get userEmailEditingController => _userEmailController;
 
   TextEditingController get passwordEditingController => _passwordController;
 
   @override
   void onInit() {
-    _userNameController = TextEditingController();
+    _userEmailController = TextEditingController();
     _passwordController = TextEditingController();
     super.onInit();
   }
 
   @override
   void onClose() {
-    _userNameController.dispose();
+    _userEmailController.dispose();
     _passwordController.dispose();
     super.onClose();
   }
 
   Future login() async {
-    final userName = userNameEditingController.text;
+    final userEmail = userEmailEditingController.text;
     final password = passwordEditingController.text;
     change(null, status: RxStatus.success());
-    if (userName.isEmpty) {
-      change(null, status: RxStatus.error("Please enter user name."));
+    if (userEmail.isEmpty) {
+      change(null, status: RxStatus.error("Please enter user email."));
       return;
     }
 
@@ -52,7 +50,7 @@ class LoginController extends GetxController with StateMixin {
 
     showProgress.value = true;
     var result = await _authService.authenticateLoginUser(
-        UserSignInModel(email: userName, password: password));
+        UserSignInModel(email: userEmail, password: password));
     if (result.token == null) {
       change(null, status: RxStatus.error(result.message));
     } else {

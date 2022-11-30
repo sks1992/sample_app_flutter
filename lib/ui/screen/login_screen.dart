@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sample_app/app_routes.dart';
 
 import '../../core/constants/helper_functions.dart';
 import '../../core/controller/login_controller.dart';
 import '../widgets/app_progress_indicator.dart';
 import '../widgets/custom_text_field.dart';
+import '../widgets/message_view.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -30,10 +32,10 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: Get.height * 0.05),
               CustomFormFieldText(
-                title: "UserName",
+                title: "UserEmail",
                 requiredFieldSymbol: true,
-                controller: _controller.userNameEditingController,
-                hint: "Type your user name here",
+                controller: _controller.userEmailEditingController,
+                hint: "Type your email here",
               ),
               const SizedBox(height: 8),
               CustomFormFieldText(
@@ -65,10 +67,28 @@ class LoginScreen extends StatelessWidget {
                       "Create Account ",
                       style: TextStyle(color: Colors.blue),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(RouteNames.signupScreen);
+                    },
                   )
                 ],
-              )
+              ),
+              Column(
+                children: [
+                  const SizedBox(height: 10),
+                  _controller.obx(
+                        (state) => MessageView(
+                      success: true,
+                      message: state ?? "",
+                    ),
+                    onLoading: const SizedBox(height: 0),
+                    onError: (err) => MessageView(
+                      success: false,
+                      message: err,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

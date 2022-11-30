@@ -23,9 +23,9 @@ class AuthController extends GetxController {
 
   void fireRoute(bool isLogged) {
     if (isLogged) {
-      Get.offNamed(RouteNames.homeScreen);
+      Get.offAllNamed(RouteNames.homeScreen);
     } else {
-      Get.offNamed(RouteNames.loginScreen);
+      Get.offAllNamed(RouteNames.loginScreen);
     }
   }
 
