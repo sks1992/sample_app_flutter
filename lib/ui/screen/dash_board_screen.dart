@@ -36,7 +36,7 @@ class DashBoardScreen extends StatelessWidget {
               blurRadius: 0.5,
             ),
           ]),
-          navBarStyle: NavBarStyle.style13,
+          navBarStyle: NavBarStyle.style3,
         );
       },
     );

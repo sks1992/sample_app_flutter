@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
+import 'package:sample_app/ui/screen/add_notes_screen.dart';
 import 'package:sample_app/ui/screen/dash_board_screen.dart';
-import 'package:sample_app/ui/screen/notes_screen.dart';
 import 'package:sample_app/ui/screen/login_screen.dart';
+import 'package:sample_app/ui/screen/notes_screen.dart';
 import 'package:sample_app/ui/screen/signup_screen.dart';
 import 'package:sample_app/ui/screen/splash_screen.dart';
 
@@ -11,7 +12,7 @@ class RouteNames {
   static String notesScreen = "/notes";
   static String splashScreen = "/splash";
   static String dashboard = "/dashboard";
-
+  static String addNotes = "/add_notes";
 }
 
 class AppRoutes {
@@ -35,6 +36,10 @@ class AppRoutes {
     GetPage(
       name: RouteNames.dashboard,
       page: () => const DashBoardScreen(),
+    ),
+    GetPage(
+      name: RouteNames.addNotes,
+      page: () => AddNotesScreen(),
     ),
   ];
 }
